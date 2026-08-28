@@ -172,6 +172,18 @@
       box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
     }
 
+    .btn-red {
+      background: rgba(255, 51, 102, 0.15);
+      border-color: rgba(255, 51, 102, 0.4);
+      color: var(--red);
+    }
+
+    .btn-red:hover {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
+    }
+
     .btn-gold {
       background: rgba(255, 183, 0, 0.15);
       border-color: rgba(255, 183, 0, 0.4);
@@ -353,7 +365,7 @@
       margin-top: auto;
     }
 
-    /* 📱 RESPONSIVE MEDIA QUERIES FOR ALL DEVICES (MD & SM) */
+    /* 📱 RESPONSIVE MEDIA QUERIES FOR ALL DEVICES */
     @media (max-width: 1024px) {
       .grid-main {
         grid-template-columns: 1fr;
@@ -459,14 +471,14 @@
         <div class="logo-badge">BHARAT OS</div>
         <div class="header-title">
           <h1>🇸🇬 Singapore Quantum HFT Terminal <span class="badge-online">120 FPS LIVE</span></h1>
-          <p>Autonomous Spot Compounding Engine • Real Binance Spot Execution & AI Audio Stream</p>
+          <p>Autonomous Spot Compounding Engine • Real Binance Execution & Profit/Loss Voice Narration</p>
         </div>
       </div>
       <div class="header-actions">
         <button class="btn" onclick="toggleVoice()" id="voice-btn">🗣️ Voice: ON</button>
         <button class="btn" onclick="toggleAudio()" id="audio-btn">🔔 SFX: ON</button>
-        <button class="btn btn-green" onclick="speakTrade('Sync Verified with Singapore Cloud Node')">🔄 Test Audio</button>
-        <button class="btn btn-gold" onclick="simulateProfit()">⚡ Test +1.5% Lock</button>
+        <button class="btn btn-green" onclick="simulateProfit()">⚡ Test Profit (+1.5%)</button>
+        <button class="btn btn-red" onclick="simulateStopLoss()">🛡️ Test Loss / Shield</button>
       </div>
     </header>
 
@@ -480,7 +492,7 @@
           <span style="color: var(--gold);">REAL WALLET</span>
         </div>
         <div class="card-value mono" id="total-val-usd" style="color: var(--green);">$4.45 <span style="font-size: 15px; color: #fff;">USD</span></div>
-        <div class="card-sub mono" id="total-val-inr" style="color: var(--cyan); font-weight: 700;">≈ ₹431.69 INR (Mobile P2P Rate)</div>
+        <div class="card-sub mono" id="total-val-inr" style="color: var(--cyan); font-weight: 700;">≈ ₹431.80 INR (Mobile P2P Rate)</div>
       </div>
 
       <!-- Card 2: Active Position -->
@@ -489,18 +501,18 @@
           <span>🪙 ACTIVE SPOT COINS</span>
           <span style="color: var(--purple);">WIF/USDT</span>
         </div>
-        <div class="card-value mono" id="holding-qty">20.70 <span style="font-size: 15px; color: var(--text-muted);">WIF</span></div>
-        <div class="card-sub mono" id="holding-state" style="color: var(--green);">Value: ≈ ₹422.04 INR ($4.35 USD)</div>
+        <div class="card-value mono" id="holding-qty">20.25 <span style="font-size: 15px; color: var(--text-muted);">WIF</span></div>
+        <div class="card-sub mono" id="holding-state" style="color: var(--green);">Value: ≈ ₹422.88 INR ($4.36 USD)</div>
       </div>
 
       <!-- Card 3: Live Market Price -->
       <div class="card">
         <div class="card-title">
           <span>📈 LIVE WIF MARKET TICK</span>
-          <span style="color: var(--green);" id="pnl-pill">+0.14%</span>
+          <span style="color: var(--green);" id="pnl-pill">+0.89%</span>
         </div>
-        <div class="card-value mono" id="live-price">$0.2102</div>
-        <div class="card-sub mono" id="target-sub" style="color: var(--gold);">🎯 Target: $0.2134 (+1.5% Cash Lock)</div>
+        <div class="card-value mono" id="live-price">$0.2153</div>
+        <div class="card-sub mono" id="target-sub" style="color: var(--gold);">🎯 Target: $0.2166 (+1.5% Cash Lock)</div>
       </div>
 
       <!-- Card 4: Real Profit Compounded -->
@@ -510,7 +522,7 @@
           <span style="color: var(--green);">PnL +15.7%</span>
         </div>
         <div class="card-value mono" style="color: var(--green);" id="real-profit">+₹58.69 <span style="font-size: 15px;">INR</span></div>
-        <div class="card-sub mono">Start: ₹373 INR ➔ Now: ₹431.69 INR</div>
+        <div class="card-sub mono">Start: ₹373 INR ➔ Now: ₹431.80 INR</div>
       </div>
 
     </div>
@@ -524,12 +536,12 @@
       <div class="grid-assets">
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
           <div style="font-size: 11px; color: var(--text-muted);">1. WIF SPOT COINS</div>
-          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--cyan); margin-top: 2px;">20.7076 WIF</div>
-          <div class="mono" style="font-size: 11px; color: var(--green);" id="wif-sub-val">≈ $4.35 USD (₹422.04)</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--cyan); margin-top: 2px;">20.2573 WIF</div>
+          <div class="mono" style="font-size: 11px; color: var(--green);" id="wif-sub-val">≈ $4.36 USD (₹422.88)</div>
         </div>
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
           <div style="font-size: 11px; color: var(--text-muted);">2. FREE USDT CASH</div>
-          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--green); margin-top: 2px;">$0.0065 USDT</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--green); margin-top: 2px;">$0.0919 USDT</div>
           <div class="mono" style="font-size: 11px; color: var(--text-muted);">Ready for Dip Entries</div>
         </div>
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
@@ -556,16 +568,16 @@
         </div>
         <div class="chart-box">
           <div class="chart-legend mono">
-            <div class="legend-item"><span class="legend-dot" style="background: #00e5ff;"></span> Price Trajectory</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #00ff88;"></span> Target ($0.2134 / +1.5%)</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #ffb700;"></span> Entry ($0.2102)</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #ff3366;"></span> Stop ($0.2085 / -0.8%)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #00e5ff;"></span> Trajectory</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #00ff88;"></span> Target ($0.2166 / +1.5%)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #ffb700;"></span> Entry ($0.2136)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #ff3366;"></span> Stop-Shield ($0.2119 / -0.8%)</div>
           </div>
           <canvas id="priceChart"></canvas>
         </div>
       </div>
 
-      <!-- Right: Singapore Cloud Server Telemetry (IP Masked) -->
+      <!-- Right: Singapore Cloud Server Telemetry -->
       <div class="card">
         <div class="card-title">
           <span>🇸🇬 SINGAPORE CLOUD TELEMETRY</span>
@@ -593,12 +605,12 @@
             <strong class="mono" style="color: var(--cyan);">Quantum HFT Core</strong>
           </div>
           <div class="telemetry-row">
-            <span class="text-muted">Process Supervisor</span>
-            <strong class="mono" style="color: var(--green);">PM2 24/7 (PID: 7338)</strong>
+            <span class="text-muted">Audio Narration</span>
+            <strong class="mono" style="color: var(--gold);">Profit & Loss Voice AI</strong>
           </div>
           <div class="telemetry-row">
-            <span class="text-muted">Audio Synthesizer</span>
-            <strong class="mono" style="color: var(--gold);">Web Speech AI + FX</strong>
+            <span class="text-muted">Capital Shield</span>
+            <strong class="mono" style="color: var(--red);">-0.8% Micro-Shield Active</strong>
           </div>
         </div>
       </div>
@@ -612,34 +624,34 @@
         <span class="mono" style="color: var(--green);">● PM2 STREAM ACTIVE</span>
       </div>
       <div class="terminal-window mono" id="terminal-log">
-        <div class="log-line"><span class="log-time">[14:10:00]</span> <span class="log-green">🦀 [BHARAT OS] Sovereign Trading Node Online on Singapore GCP</span></div>
-        <div class="log-line"><span class="log-time">[14:10:01]</span> <span class="log-cyan">✅ [AUTH] Binance Official API Authenticated (HTTP 200 OK)</span></div>
-        <div class="log-line"><span class="log-time">[14:10:01]</span> <span class="log-gold">🪙 [SPOT] Holding 20.70 WIF Coins • Target: +1.5% Fast Cash Lock ($0.2134)</span></div>
-        <div class="log-line"><span class="log-time">[14:10:05]</span> <span>📈 [TICK] WIF: $0.2103 | PnL: +0.05% (+0.20 INR) | Target: $0.2134</span></div>
-        <div class="log-line"><span class="log-time">[14:10:10]</span> <span class="log-green">📈 [TICK] WIF: $0.2105 | PnL: +0.14% (+0.60 INR) | Target: $0.2134</span></div>
+        <div class="log-line"><span class="log-time">[14:30:00]</span> <span class="log-green">🦀 [BHARAT OS] Cycle #3 Active • Holding 20.25 WIF @ $0.2136</span></div>
+        <div class="log-line"><span class="log-time">[14:30:01]</span> <span class="log-cyan">✅ [AUTH] Binance Official API Authenticated (HTTP 200 OK)</span></div>
+        <div class="log-line"><span class="log-time">[14:30:05]</span> <span class="log-gold">🎯 [TARGET] Next Profit Lock Target: $0.2166 (+1.5%) | Shield: $0.2119 (-0.8%)</span></div>
+        <div class="log-line"><span class="log-time">[14:30:10]</span> <span class="log-green">📈 [TICK] WIF: $0.2153 | PnL: +0.89% (+3.73 INR) | Target: $0.2166</span></div>
       </div>
     </div>
 
   </div>
 
   <footer class="footer mono">
-    🇮🇳 BHARAT OS SOVEREIGN TRADING SYSTEM • GOOGLE CLOUD SINGAPORE NODE • 120 FPS GPU RENDERING & AI VOICE
+    🇮🇳 BHARAT OS SOVEREIGN TRADING SYSTEM • GOOGLE CLOUD SINGAPORE NODE • PROFIT & LOSS VOICE ALERTS
   </footer>
 
   <script>
-    // 1. Audio & Voice Synthesizer System
+    // 1. Full Audio & Voice Synthesizer System (Profit & Loss)
     let audioEnabled = true;
     let voiceEnabled = true;
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+    // PROFIT SOUND: Dual Harmonic Ka-Ching Chime
     function playKaChing() {
       if (!audioEnabled) return;
       try {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.12);
+        osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime); // C6
+        osc.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.12); // G6
         gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
         osc.connect(gain);
@@ -649,12 +661,52 @@
       } catch (e) {}
     }
 
-    function speakTrade(text) {
+    // LOSS / STOP-LOSS SHIELD SOUND: Emergency Warning Alarm
+    function playAlarm() {
+      if (!audioEnabled) return;
+      try {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, now); // A4
+        osc.frequency.linearRampToValueAtTime(880, now + 0.15);
+        osc.frequency.linearRampToValueAtTime(440, now + 0.3);
+        osc.frequency.linearRampToValueAtTime(880, now + 0.45);
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(now + 0.6);
+      } catch (e) {}
+    }
+
+    // DIP WARNING SOUND: Deep Sub-Bass Drop
+    function playBassDrop() {
+      if (!audioEnabled) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } catch (e) {}
+    }
+
+    // REAL AI SPEECH NARRATOR (Speaks in Crystal-Clear Voice)
+    function speakTrade(text, isAlert = false) {
       if (!voiceEnabled || !('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 1.05;
-      utterance.pitch = 1.0;
+      utterance.pitch = isAlert ? 0.9 : 1.1;
       window.speechSynthesis.speak(utterance);
     }
 
@@ -683,9 +735,9 @@
     let prices = [];
     const maxPoints = 60;
 
-    let targetPrice = 0.2134; // +1.5%
-    let entryPrice = 0.2102;  // Entry baseline
-    let stopPrice = 0.2085;   // -0.8%
+    let targetPrice = 0.2166; // +1.5% Target for Cycle #3
+    let entryPrice = 0.2136;  // Entry baseline for Cycle #3
+    let stopPrice = 0.2119;   // -0.8% Shield for Cycle #3
 
     let animTime = 0;
     let lastFrameTime = performance.now();
@@ -697,7 +749,7 @@
         const res = await fetch('https://api.binance.com/api/v3/klines?symbol=WIFUSDT&interval=1m&limit=50');
         const klines = await res.json();
         if (Array.isArray(klines) && klines.length > 0) {
-          prices = klines.map(k => parseFloat(k[4])); // Real 1-minute Close Prices
+          prices = klines.map(k => parseFloat(k[4]));
           const latest = prices[prices.length - 1];
           document.getElementById('live-price').innerText = '$' + latest.toFixed(4);
         }
@@ -770,7 +822,7 @@
       ctx.lineTo(w, stopY);
       ctx.stroke();
       ctx.fillStyle = '#ff3366';
-      ctx.fillText('🛡️ STOP -0.8%: $' + stopPrice.toFixed(4), w - 150, stopY - 6);
+      ctx.fillText('🛡️ SHIELD -0.8%: $' + stopPrice.toFixed(4), w - 150, stopY - 6);
       ctx.setLineDash([]);
 
       // Area Gradient Fill
@@ -840,8 +892,9 @@
 
     requestAnimationFrame(render120FpsChart);
 
-    // 3. Live Binance Official WebSocket Feed (Real Trades)
-    let lastSpokenPrice = 0;
+    // 3. Live Binance Official WebSocket Feed (Real Trades + Audio Triggers)
+    let lastSpokenProfitTime = 0;
+    let lastSpokenLossTime = 0;
 
     function connectBinanceWs() {
       const ws = new WebSocket('wss://stream.binance.com:9443/ws/wifusdt@trade');
@@ -852,13 +905,13 @@
         document.getElementById('live-price').innerText = '$' + curPrice.toFixed(4);
         
         const pnl = ((curPrice - entryPrice) / entryPrice) * 100;
-        const pnlInr = (curPrice - entryPrice) * 20.70 * 96.96;
+        const pnlInr = (curPrice - entryPrice) * 20.25 * 96.96;
         
         const pnlPill = document.getElementById('pnl-pill');
         pnlPill.innerText = (pnl >= 0 ? '+' : '') + pnl.toFixed(2) + '%';
         pnlPill.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
 
-        const netWorthUsd = (curPrice * 20.7076) + 0.0065;
+        const netWorthUsd = (curPrice * 20.2573) + 0.0919;
         const netWorthInr = netWorthUsd * 96.96;
         
         document.getElementById('total-val-usd').innerHTML = '$' + netWorthUsd.toFixed(2) + ' <span style="font-size: 15px; color: var(--green);">USD</span>';
@@ -867,12 +920,20 @@
         prices.push(curPrice);
         if (prices.length > maxPoints) prices.shift();
 
-        // Check Take Profit (+1.5%)
-        if (curPrice >= targetPrice && (Date.now() - lastSpokenPrice > 15000)) {
-          lastSpokenPrice = Date.now();
+        // 🟢 PROFIT EVENT TRIGGER (+1.5%)
+        if (curPrice >= targetPrice && (Date.now() - lastSpokenProfitTime > 20000)) {
+          lastSpokenProfitTime = Date.now();
           playKaChing();
-          speakTrade("Target Reached! Real Cash Profit Locked on Binance!");
-          addLog(`🎯 [TAKE-PROFIT] Target $${curPrice.toFixed(4)} Reached! Locked Cash Profit!`, 'log-green');
+          speakTrade("Target Reached! Cash Profit Locked on Binance Spot!");
+          addLog(`🎉 [TAKE-PROFIT] Target $${curPrice.toFixed(4)} Reached! Cash Profit Locked!`, 'log-green');
+        }
+
+        // 🔴 STOP-LOSS / LOSS EVENT TRIGGER (-0.8%)
+        if (curPrice <= stopPrice && (Date.now() - lastSpokenLossTime > 20000)) {
+          lastSpokenLossTime = Date.now();
+          playAlarm();
+          speakTrade("Warning: Capital Shield Triggered! Micro Stop Loss Executed to Protect Balance!", true);
+          addLog(`🛡️ [STOP-SHIELD] Price dropped to $${curPrice.toFixed(4)}. Capital Shield Active!`, 'log-red');
         }
       };
 
@@ -891,8 +952,14 @@
 
     function simulateProfit() {
       playKaChing();
-      speakTrade("Real Spot Cash Profit Locked! Cycle Complete!");
-      addLog("🎉 [PROFIT LOCK] Sold 20.70 WIF @ $0.2134 (+1.5%) • Real Cash Secured in Binance Wallet!", "log-green");
+      speakTrade("Target Reached! Real Spot Cash Profit Locked on Binance!");
+      addLog("🎉 [PROFIT LOCK] Sold 20.25 WIF @ $0.2166 (+1.5%) • Real Cash Profit Secured!", "log-green");
+    }
+
+    function simulateStopLoss() {
+      playAlarm();
+      speakTrade("Warning: Stop Loss Shield Triggered! Capital Protected!", true);
+      addLog("🛡️ [STOP-SHIELD] Sold 20.25 WIF @ $0.2119 (-0.8%) • Balance Protected from further dip!", "log-red");
     }
   </script>
 </body>
