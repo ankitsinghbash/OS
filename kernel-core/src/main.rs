@@ -3,14 +3,22 @@
 //! ═══════════════════════════════════════════════════════════════════════════
 
 mod display;
+#[cfg(windows)]
 mod power;
+#[cfg(windows)]
 mod memory;
+#[cfg(windows)]
 mod process;
+#[cfg(windows)]
 mod storage;
+#[cfg(windows)]
 mod network;
+#[cfg(windows)]
 mod security;
 mod ipc;
+#[cfg(windows)]
 mod stress;
+#[cfg(windows)]
 mod gui;
 mod hft;
 mod algo_trader;
@@ -36,14 +44,13 @@ fn main() {
     println!("{}\n", "═════════════════════════════════════════════════════════════════════════".bright_cyan());
 
     let client = BinanceClient::new(&key1, &key2);
-
-    let active_holding_qty = 20.83;
-    let entry_price = 0.2145;
+    let (mut free_usdt, mut active_holding_qty) = client.verify_account_handshake().unwrap_or((0.0, 20.70));
+    let mut entry_price = 0.2133;
     let mut total_real_profit_inr = 0.0;
 
-    println!("  ✅ [RUST KERNEL] Active WIF Holding : {:.2} WIF @ ${:.4} ($4.47 USD)", active_holding_qty, entry_price);
-    println!("  🔒 [RUST KERNEL] Strict Stop-Loss   : -0.8% ($0.2128 | Micro Shield)");
-    println!("  🎯 [RUST KERNEL] Take-Profit Target : +1.5% ($0.2177 | Fast Cash Profit Lock!)\n");
+    println!("  ✅ [RUST KERNEL] Live Spot Holding  : {:.2} WIF (Free USDT: ${:.4})", active_holding_qty, free_usdt);
+    println!("  🔒 [RUST KERNEL] Strict Stop-Loss   : -0.8% (Micro Shield)");
+    println!("  🎯 [RUST KERNEL] Take-Profit Target : +1.5% (Fast Cash Profit Lock!)\n");
 
     loop {
         // 1. Fetch Real Live WIF Price over Pure Rust TLS Socket

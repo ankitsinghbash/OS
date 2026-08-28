@@ -55,6 +55,7 @@ impl BinanceClient {
 
         let mut usdt_free = 0.0;
         let mut btc_free = 0.0;
+        let mut wif_free = 0.0;
 
         if let Some(balances) = json_val["balances"].as_array() {
             for b in balances {
@@ -62,35 +63,13 @@ impl BinanceClient {
                     usdt_free = b["free"].as_str().unwrap_or("0.0").parse::<f64>().unwrap_or(0.0);
                 } else if b["asset"] == "BTC" {
                     btc_free = b["free"].as_str().unwrap_or("0.0").parse::<f64>().unwrap_or(0.0);
+                } else if b["asset"] == "WIF" {
+                    wif_free = b["free"].as_str().unwrap_or("0.0").parse::<f64>().unwrap_or(0.0);
                 }
             }
         }
 
-        // Also query Funding Asset if Spot is 0
-        if usdt_free == 0.0 {
-            let funding_query = format!("timestamp={}&recvWindow=60000", timestamp);
-            let funding_sig = self.sign_query(&funding_query);
-            let funding_url = format!("https://api.binance.com/sapi/v1/asset/getUserAsset?{}&signature={}", funding_query, funding_sig);
-            if let Ok(res) = ureq::post(&funding_url)
-                .set("X-MBX-APIKEY", &self.api_key)
-                .timeout(std::time::Duration::from_millis(5000))
-                .call() 
-            {
-                if let Ok(body) = res.into_string() {
-                    if let Ok(assets) = serde_json::from_str::<Value>(&body) {
-                        if let Some(arr) = assets.as_array() {
-                            for a in arr {
-                                if a["asset"] == "USDT" {
-                                    usdt_free = a["free"].as_str().unwrap_or("0.0").parse::<f64>().unwrap_or(0.0);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        Ok((usdt_free, btc_free))
+        Ok((usdt_free, wif_free))
     }
 }
 
