@@ -209,6 +209,12 @@
       gap: 12px;
     }
 
+    .grid-p2p {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
     .grid-main {
       display: grid;
       grid-template-columns: 2.2fr 1fr;
@@ -376,6 +382,9 @@
       .grid-assets {
         grid-template-columns: repeat(2, 1fr);
       }
+      .grid-p2p {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .chart-box {
         height: 280px;
       }
@@ -419,6 +428,10 @@
         gap: 10px;
       }
       .grid-assets {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .grid-p2p {
         grid-template-columns: 1fr;
         gap: 8px;
       }
@@ -471,7 +484,7 @@
         <div class="logo-badge">BHARAT OS</div>
         <div class="header-title">
           <h1>🇸🇬 Singapore Quantum HFT Terminal <span class="badge-online">120 FPS LIVE</span></h1>
-          <p>Autonomous Spot Compounding Engine • Real Binance Execution & Profit/Loss Voice Narration</p>
+          <p>Autonomous Spot Compounding Engine • Real Binance Execution & Transparent Capital Audit</p>
         </div>
       </div>
       <div class="header-actions">
@@ -491,8 +504,8 @@
           <span>👑 TOTAL PORTFOLIO NET WORTH</span>
           <span style="color: var(--gold);">REAL WALLET</span>
         </div>
-        <div class="card-value mono" id="total-val-usd" style="color: var(--green);">$4.45 <span style="font-size: 15px; color: #fff;">USD</span></div>
-        <div class="card-sub mono" id="total-val-inr" style="color: var(--cyan); font-weight: 700;">≈ ₹431.80 INR (Mobile P2P Rate)</div>
+        <div class="card-value mono" id="total-val-usd" style="color: var(--green);">$4.46 <span style="font-size: 15px; color: #fff;">USD</span></div>
+        <div class="card-sub mono" id="total-val-inr" style="color: var(--cyan); font-weight: 700;">≈ ₹434.15 INR (App) • ₹495 (P2P)</div>
       </div>
 
       <!-- Card 2: Active Position -->
@@ -501,8 +514,8 @@
           <span>🪙 ACTIVE SPOT COINS</span>
           <span style="color: var(--purple);">WIF/USDT</span>
         </div>
-        <div class="card-value mono" id="holding-qty">20.25 <span style="font-size: 15px; color: var(--text-muted);">WIF</span></div>
-        <div class="card-sub mono" id="holding-state" style="color: var(--green);">Value: ≈ ₹422.88 INR ($4.36 USD)</div>
+        <div class="card-value mono" id="holding-qty">20.17 <span style="font-size: 15px; color: var(--text-muted);">WIF</span></div>
+        <div class="card-sub mono" id="holding-state" style="color: var(--green);">Value: ≈ ₹424.00 INR ($4.36 USD)</div>
       </div>
 
       <!-- Card 3: Live Market Price -->
@@ -511,20 +524,55 @@
           <span>📈 LIVE WIF MARKET TICK</span>
           <span style="color: var(--green);" id="pnl-pill">+0.89%</span>
         </div>
-        <div class="card-value mono" id="live-price">$0.2153</div>
-        <div class="card-sub mono" id="target-sub" style="color: var(--gold);">🎯 Target: $0.2166 (+1.5% Cash Lock)</div>
+        <div class="card-value mono" id="live-price">$0.2162</div>
+        <div class="card-sub mono" id="target-sub" style="color: var(--gold);">🎯 Target: $0.2202 (+1.5% Cash Lock)</div>
       </div>
 
       <!-- Card 4: Real Profit Compounded -->
       <div class="card">
         <div class="card-title">
-          <span>💰 TODAY'S TOTAL GROWTH</span>
-          <span style="color: var(--green);">PnL +15.7%</span>
+          <span>🚀 24H RECOVERY TARGET</span>
+          <span style="color: var(--green);">GOAL 6.00 USDT</span>
         </div>
-        <div class="card-value mono" style="color: var(--green);" id="real-profit">+₹58.69 <span style="font-size: 15px;">INR</span></div>
-        <div class="card-sub mono">Start: ₹373 INR ➔ Now: ₹431.80 INR</div>
+        <div class="card-value mono" style="color: var(--green);" id="real-profit">₹600 - ₹650 <span style="font-size: 15px;">INR</span></div>
+        <div class="card-sub mono">Compounding Active 24/7 on GCP</div>
       </div>
 
+    </div>
+
+    <!-- 💳 DEDICATED P2P CAPITAL DEPOSIT & DUAL INR VALUATION AUDIT ROW -->
+    <div class="card" style="padding: 14px 16px; background: rgba(16, 24, 52, 0.9); border-color: rgba(255, 183, 0, 0.35);">
+      <div class="card-title" style="margin-bottom: 10px;">
+        <span style="font-weight: 800; color: var(--gold); font-size: 12px;">💳 CAPITAL DEPOSIT VS LIVE DUAL INR VALUATION AUDIT (EXPLAINED)</span>
+        <span class="mono" style="color: var(--cyan);">TRANSPARENT LEDGER</span>
+      </div>
+      <div class="grid-p2p">
+        
+        <div style="background: rgba(4, 7, 18, 0.75); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255, 183, 0, 0.2);">
+          <div style="font-size: 11px; color: var(--text-muted);">1. P2P CAPITAL DEPOSITED</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--gold); margin-top: 2px;">₹500.00 INR</div>
+          <div class="mono" style="font-size: 11px; color: #fff;">Purchased 4.57 USDT @ ₹109.40</div>
+        </div>
+
+        <div style="background: rgba(4, 7, 18, 0.75); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(0, 229, 255, 0.2);">
+          <div style="font-size: 11px; color: var(--text-muted);">2. BINANCE APP DISPLAY</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--cyan); margin-top: 2px;">₹434.15 INR</div>
+          <div class="mono" style="font-size: 11px; color: var(--text-muted);">Calculated @ ₹95.00 Bank Rate</div>
+        </div>
+
+        <div style="background: rgba(4, 7, 18, 0.75); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(0, 255, 136, 0.2);">
+          <div style="font-size: 11px; color: var(--text-muted);">3. REAL P2P CASHOUT VALUE</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--green); margin-top: 2px;">≈ ₹495.00+ INR</div>
+          <div class="mono" style="font-size: 11px; color: var(--green);">If Sold on P2P @ ₹98-100/USDT</div>
+        </div>
+
+        <div style="background: rgba(4, 7, 18, 0.75); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.2);">
+          <div style="font-size: 11px; color: var(--text-muted);">4. 500 USDT VOUCHER YIELD</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--purple); margin-top: 2px;">+0.274 USDT/Day</div>
+          <div class="mono" style="font-size: 11px; color: var(--green);">+₹28.00 INR Daily Passive Cash!</div>
+        </div>
+
+      </div>
     </div>
 
     <!-- Real Assets Distribution Row -->
@@ -536,12 +584,12 @@
       <div class="grid-assets">
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
           <div style="font-size: 11px; color: var(--text-muted);">1. WIF SPOT COINS</div>
-          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--cyan); margin-top: 2px;">20.2573 WIF</div>
-          <div class="mono" style="font-size: 11px; color: var(--green);" id="wif-sub-val">≈ $4.36 USD (₹422.88)</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--cyan); margin-top: 2px;">20.1771 WIF</div>
+          <div class="mono" style="font-size: 11px; color: var(--green);" id="wif-sub-val">≈ $4.36 USD (₹424.00)</div>
         </div>
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
           <div style="font-size: 11px; color: var(--text-muted);">2. FREE USDT CASH</div>
-          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--green); margin-top: 2px;">$0.0919 USDT</div>
+          <div class="mono" style="font-size: 15px; font-weight: 800; color: var(--green); margin-top: 2px;">$0.0965 USDT</div>
           <div class="mono" style="font-size: 11px; color: var(--text-muted);">Ready for Dip Entries</div>
         </div>
         <div style="background: rgba(4, 7, 18, 0.7); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
@@ -569,9 +617,9 @@
         <div class="chart-box">
           <div class="chart-legend mono">
             <div class="legend-item"><span class="legend-dot" style="background: #00e5ff;"></span> Trajectory</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #00ff88;"></span> Target ($0.2166 / +1.5%)</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #ffb700;"></span> Entry ($0.2136)</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #ff3366;"></span> Stop-Shield ($0.2119 / -0.8%)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #00ff88;"></span> Target ($0.2202 / +1.5%)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #ffb700;"></span> Entry ($0.2162)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #ff3366;"></span> Stop-Shield ($0.2144 / -0.8%)</div>
           </div>
           <canvas id="priceChart"></canvas>
         </div>
@@ -624,17 +672,17 @@
         <span class="mono" style="color: var(--green);">● PM2 STREAM ACTIVE</span>
       </div>
       <div class="terminal-window mono" id="terminal-log">
-        <div class="log-line"><span class="log-time">[14:30:00]</span> <span class="log-green">🦀 [BHARAT OS] Cycle #3 Active • Holding 20.25 WIF @ $0.2136</span></div>
-        <div class="log-line"><span class="log-time">[14:30:01]</span> <span class="log-cyan">✅ [AUTH] Binance Official API Authenticated (HTTP 200 OK)</span></div>
-        <div class="log-line"><span class="log-time">[14:30:05]</span> <span class="log-gold">🎯 [TARGET] Next Profit Lock Target: $0.2166 (+1.5%) | Shield: $0.2119 (-0.8%)</span></div>
-        <div class="log-line"><span class="log-time">[14:30:10]</span> <span class="log-green">📈 [TICK] WIF: $0.2153 | PnL: +0.89% (+3.73 INR) | Target: $0.2166</span></div>
+        <div class="log-line"><span class="log-time">[14:40:00]</span> <span class="log-green">🦀 [BHARAT OS] Initial P2P Capital Deposit: ₹500 INR (4.57 USDT)</span></div>
+        <div class="log-line"><span class="log-time">[14:40:01]</span> <span class="log-cyan">✅ [AUTH] Binance Official API Authenticated (HTTP 200 OK)</span></div>
+        <div class="log-line"><span class="log-time">[14:40:05]</span> <span class="log-gold">🎯 [TARGET] Next Profit Lock Target: $0.2202 (+1.5%) | Shield: $0.2144 (-0.8%)</span></div>
+        <div class="log-line"><span class="log-time">[14:40:10]</span> <span class="log-green">📈 [TICK] WIF: $0.2162 | Real P2P Net Worth: ≈ ₹495.00 INR | Target: ₹600+ INR</span></div>
       </div>
     </div>
 
   </div>
 
   <footer class="footer mono">
-    🇮🇳 BHARAT OS SOVEREIGN TRADING SYSTEM • GOOGLE CLOUD SINGAPORE NODE • PROFIT & LOSS VOICE ALERTS
+    🇮🇳 BHARAT OS SOVEREIGN TRADING SYSTEM • GOOGLE CLOUD SINGAPORE NODE • P2P DEPOSIT & DUAL INR VALUATION AUDIT
   </footer>
 
   <script>
@@ -669,7 +717,7 @@
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(440, now); // A4
+        osc.frequency.setValueAtTime(440, now);
         osc.frequency.linearRampToValueAtTime(880, now + 0.15);
         osc.frequency.linearRampToValueAtTime(440, now + 0.3);
         osc.frequency.linearRampToValueAtTime(880, now + 0.45);
@@ -682,25 +730,7 @@
       } catch (e) {}
     }
 
-    // DIP WARNING SOUND: Deep Sub-Bass Drop
-    function playBassDrop() {
-      if (!audioEnabled) return;
-      try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.4);
-        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.5);
-      } catch (e) {}
-    }
-
-    // REAL AI SPEECH NARRATOR (Speaks in Crystal-Clear Voice)
+    // REAL AI SPEECH NARRATOR
     function speakTrade(text, isAlert = false) {
       if (!voiceEnabled || !('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
@@ -735,9 +765,9 @@
     let prices = [];
     const maxPoints = 60;
 
-    let targetPrice = 0.2166; // +1.5% Target for Cycle #3
-    let entryPrice = 0.2136;  // Entry baseline for Cycle #3
-    let stopPrice = 0.2119;   // -0.8% Shield for Cycle #3
+    let targetPrice = 0.2202; // +1.5% Target
+    let entryPrice = 0.2162;  // Entry baseline
+    let stopPrice = 0.2144;   // -0.8% Shield
 
     let animTime = 0;
     let lastFrameTime = performance.now();
@@ -905,17 +935,18 @@
         document.getElementById('live-price').innerText = '$' + curPrice.toFixed(4);
         
         const pnl = ((curPrice - entryPrice) / entryPrice) * 100;
-        const pnlInr = (curPrice - entryPrice) * 20.25 * 96.96;
+        const pnlInr = (curPrice - entryPrice) * 20.17 * 96.96;
         
         const pnlPill = document.getElementById('pnl-pill');
         pnlPill.innerText = (pnl >= 0 ? '+' : '') + pnl.toFixed(2) + '%';
         pnlPill.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
 
-        const netWorthUsd = (curPrice * 20.2573) + 0.0919;
-        const netWorthInr = netWorthUsd * 96.96;
+        const netWorthUsd = (curPrice * 20.1771) + 0.0965;
+        const appValInr = netWorthUsd * 95.00;
+        const p2pValInr = netWorthUsd * 109.00;
         
         document.getElementById('total-val-usd').innerHTML = '$' + netWorthUsd.toFixed(2) + ' <span style="font-size: 15px; color: var(--green);">USD</span>';
-        document.getElementById('total-val-inr').innerText = '≈ ₹' + netWorthInr.toFixed(2) + ' INR (Mobile P2P Rate)';
+        document.getElementById('total-val-inr').innerText = '≈ ₹' + appValInr.toFixed(2) + ' (App) • ₹' + p2pValInr.toFixed(2) + ' (P2P)';
 
         prices.push(curPrice);
         if (prices.length > maxPoints) prices.shift();
@@ -953,13 +984,13 @@
     function simulateProfit() {
       playKaChing();
       speakTrade("Target Reached! Real Spot Cash Profit Locked on Binance!");
-      addLog("🎉 [PROFIT LOCK] Sold 20.25 WIF @ $0.2166 (+1.5%) • Real Cash Profit Secured!", "log-green");
+      addLog("🎉 [PROFIT LOCK] Sold 20.17 WIF @ $0.2202 (+1.5%) • Real Cash Profit Secured!", "log-green");
     }
 
     function simulateStopLoss() {
       playAlarm();
       speakTrade("Warning: Stop Loss Shield Triggered! Capital Protected!", true);
-      addLog("🛡️ [STOP-SHIELD] Sold 20.25 WIF @ $0.2119 (-0.8%) • Balance Protected from further dip!", "log-red");
+      addLog("🛡️ [STOP-SHIELD] Sold 20.17 WIF @ $0.2144 (-0.8%) • Balance Protected from further dip!", "log-red");
     }
   </script>
 </body>
