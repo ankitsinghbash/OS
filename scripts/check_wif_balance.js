@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const https = require('https');
 
-require('./env_loader');
+require('../env_loader');
 const API_KEY = process.env.BINANCE_API_KEY;
 const SECRET_KEY = process.env.BINANCE_SECRET_KEY;
 
