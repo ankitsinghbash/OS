@@ -1,3 +1,4 @@
+#[cfg(windows)]
 pub mod display;
 #[cfg(windows)]
 pub mod power;
@@ -20,6 +21,7 @@ pub mod hft;
 pub mod algo_trader;
 pub mod paper_trader;
 pub mod live_feed;
+#[cfg(windows)]
 pub mod ipc_server;
 pub mod binance_auth;
 pub mod live_real_trader;

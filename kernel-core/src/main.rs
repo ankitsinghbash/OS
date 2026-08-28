@@ -2,6 +2,7 @@
 //! 🇮🇳 BHARAT OS PURE RUST KERNEL — DIRECT REAL SPOT TRADING ENGINE (WIF/USDT)
 //! ═══════════════════════════════════════════════════════════════════════════
 
+#[cfg(windows)]
 mod display;
 #[cfg(windows)]
 mod power;
@@ -24,6 +25,7 @@ mod hft;
 mod algo_trader;
 mod paper_trader;
 mod live_feed;
+#[cfg(windows)]
 mod ipc_server;
 mod binance_auth;
 mod live_real_trader;
