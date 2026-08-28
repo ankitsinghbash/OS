@@ -1,0 +1,12 @@
+[workspace]
+name = "BharatOS"
+resolver = "2"
+
+members = [
+    "kernel-core",
+    "bootloader",
+]
+
+[workspace.metadata]
+description = "BharatOS — Sovereign Indian Operating System in Pure Rust"
+authors = ["Ankit Singh <ankit@bharatos.in>"]

@@ -1,0 +1,36 @@
+[package]
+name = "bharatos-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ankit Singh <ankit@bharatos.in>"]
+description = "Sovereign High-Performance Indian Operating System Core & Shell in Pure Rust"
+
+[dependencies]
+colored = "2.1"
+ureq = { version = "2.9", default-features = false, features = ["tls"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+
+[dependencies.windows]
+version = "0.52"
+features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_Dwm",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Power",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Pipes",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_Networking_WinSock"
+]
