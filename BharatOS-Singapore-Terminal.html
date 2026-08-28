@@ -520,10 +520,10 @@
       <div class="card">
         <div class="card-title">
           <span>💰 REAL PROFIT GAIN TODAY</span>
-          <span style="color: var(--green);">PnL +16.35%</span>
+          <span style="color: var(--green);" id="today-profit-pill">PnL +16.35%</span>
         </div>
         <div class="card-value mono" style="color: var(--green);" id="real-profit-inr">+₹61.00 <span style="font-size: 15px;">INR</span></div>
-        <div class="card-sub mono" style="color: var(--cyan); font-weight: 600;">Start: ₹373 INR ➔ Now: ₹434.15 INR</div>
+        <div class="card-sub mono" id="today-profit-sub" style="color: var(--cyan); font-weight: 600;">Start: ₹373.00 INR ➔ Now: ₹434.15 INR</div>
       </div>
 
     </div>
@@ -900,6 +900,15 @@
         
         document.getElementById('total-val-usd').innerHTML = '$' + netWorthUsd.toFixed(2) + ' <span style="font-size: 15px; color: var(--green);">USD</span>';
         document.getElementById('total-val-inr').innerText = '≈ ₹' + appValInr.toFixed(2) + ' (App) • ₹' + p2pValInr.toFixed(2) + ' (P2P)';
+
+        // Dynamically update Card 4 (Today's Real Profit Gain)
+        const startBaseInr = 373.00;
+        const profitGainInr = appValInr - startBaseInr;
+        const profitGainPct = ((appValInr - startBaseInr) / startBaseInr) * 100;
+        
+        document.getElementById('real-profit-inr').innerHTML = '+' + (profitGainInr >= 0 ? '₹' : '-₹') + Math.abs(profitGainInr).toFixed(2) + ' <span style="font-size: 15px;">INR</span>';
+        document.getElementById('today-profit-pill').innerText = 'PnL ' + (profitGainPct >= 0 ? '+' : '') + profitGainPct.toFixed(2) + '%';
+        document.getElementById('today-profit-sub').innerText = 'Start: ₹373.00 INR ➔ Now: ₹' + appValInr.toFixed(2) + ' INR';
 
         prices.push(curPrice);
         if (prices.length > maxPoints) prices.shift();
