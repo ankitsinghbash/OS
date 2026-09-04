@@ -1,16 +1,16 @@
 //! ═══════════════════════════════════════════════════════════════════════════
-//! 🇮🇳 BHARAT OS PURE RUST KERNEL — SOVEREIGN DELTA-NEUTRAL FUNDING ENGINE
-//! ═══════════════════════════════════════════════════════════════════════════
-//! Strategy : Delta-Neutral (Spot Long + Futures Short 1x/3x)
-//! Income   : Direct Binance Cash Funding Fee Payments Every 8 Hours
-//! Risk     : ZERO Market Direction Risk (100% Hedged)
+//! 🇮🇳 BHARAT OS — Funding Rate Engine Binary Entry Point
+//! Compile: cargo build --release --bin bharatos-funding
+//! Run:     ./target/release/bharatos-funding
 //! ═══════════════════════════════════════════════════════════════════════════
 
+// Use modules from the lib crate (bharatos-core)
+use bharatos_core::funding_rate_engine::FundingRateEngine;
 use std::fs;
 use std::path::Path;
-use bharatos_core::funding_rate_engine::FundingRateEngine;
 
 fn load_env() -> (String, String) {
+    // Try server path first, then local .env
     let paths = [
         "/home/bharatos_user/bharatos/.env",
         "../.env",
@@ -40,7 +40,6 @@ fn load_env() -> (String, String) {
 }
 
 fn main() {
-    println!("🇮🇳 BHARAT OS SOVEREIGN ARBITRAGE KERNEL INITIALIZING...");
     let (api_key, secret_key) = load_env();
     let engine = FundingRateEngine::new(&api_key, &secret_key);
     engine.run();

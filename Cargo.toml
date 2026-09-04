@@ -4,9 +4,8 @@ resolver = "2"
 
 members = [
     "kernel-core",
-    "bootloader",
 ]
 
 [workspace.metadata]
-description = "BharatOS — Sovereign Indian Operating System in Pure Rust"
+description = "BharatOS — Sovereign Delta-Neutral Funding Rate Arbitrage Engine in Pure Rust"
 authors = ["Ankit Singh <ankit@bharatos.in>"]

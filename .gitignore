@@ -1,14 +1,35 @@
-# Environment Variables & API Secrets (CRITICAL)
+# ═════════════════════════════════════════════════════════════════════════
+# 🇮🇳 BHARAT OS — CYBERSECURITY REPOSITORY PROTECTION (.gitignore)
+# ═════════════════════════════════════════════════════════════════════════
+
+# Environment Variables & API Secrets (CRITICAL: ZERO-LEAK POLICY)
 .env
-.env.local
-.env.*.local
+.env.*
 *.env
 config.json
+
+# Cryptographic Keys & Certificates
+*.pem
+*.key
+*.pub
+id_*
+*.pfx
+*.crt
+*.cert
+
+# Telemetry Cache & Financial Records
+latest_dashboard_data.json
+*.csv
+*.tsv
 
 # Rust Build Artifacts
 target/
 **/*.rs.bk
 Cargo.lock
+bharatos-funding-linux-bin
+*.bin
+*.exe
+
 
 # Node.js & NPM
 node_modules/
