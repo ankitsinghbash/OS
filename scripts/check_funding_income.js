@@ -2,11 +2,26 @@ const https = require('https');
 const crypto = require('crypto');
 const fs = require('fs');
 
+const path = require('path');
+const os = require('os');
+
 const env = {};
-fs.readFileSync('/home/bharatos_user/bharatos/.env', 'utf8').split('\n').forEach(l => {
-  const i = l.indexOf('=');
-  if (i > 0) env[l.slice(0, i).trim()] = l.slice(i + 1).trim();
-});
+const envPaths = [
+  path.join(__dirname, '..', '.env'),
+  path.join(os.homedir(), 'bharatos', '.env'),
+  process.env.BHARATOS_ENV_PATH
+].filter(Boolean);
+
+for (const p of envPaths) {
+  if (fs.existsSync(p)) {
+    fs.readFileSync(p, 'utf8').split('\n').forEach(l => {
+      const i = l.indexOf('=');
+      if (i > 0) env[l.slice(0, i).trim()] = l.slice(i + 1).trim();
+    });
+    break;
+  }
+}
+
 
 const ts = Date.now();
 const qs = 'incomeType=FUNDING_FEE&limit=10&timestamp=' + ts + '&recvWindow=10000';

@@ -10,7 +10,8 @@ path = "src/bin/funding_main.rs"
 [[bin]]
 name = "bharatos-kernel"
 path = "src/main.rs"
-authors = ["Ankit Singh <ankit@bharatos.in>"]
+authors = ["BharatOS Core Contributors <dev@bharatos.org>"]
+
 description = "Sovereign Delta-Neutral Arbitrage Engine in Pure Rust"
 
 [dependencies]

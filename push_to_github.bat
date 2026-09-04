@@ -6,8 +6,9 @@ echo =========================================================================
 echo.
 cd /d "%~dp0"
 git add -A
-git commit -m "feat: Sovereign Delta-Neutral Funding Engine, cybersecurity hardening & live dashboard"
+git commit -m "fix(security): sanitize personal paths and IPs to dynamic environment variables"
 git push origin main
+
 echo.
 echo =========================================================================
 echo   Done!

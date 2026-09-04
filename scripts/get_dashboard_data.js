@@ -2,15 +2,18 @@ const https = require('https');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
-// Dynamically locate .env
+
+// Dynamically locate .env (Zero Hardcoded Personal Paths)
 let envContent = '';
 const candidatePaths = [
   path.join(__dirname, '..', '.env'),
   path.join(__dirname, '.env'),
-  '/home/bharatos_user/bharatos/.env',
-  'd:\\Office\\Whatsipfy_Project\\BharatOS\\.env'
-];
+  path.join(os.homedir(), 'bharatos', '.env'),
+  process.env.BHARATOS_ENV_PATH
+].filter(Boolean);
+
 
 for (const p of candidatePaths) {
   if (fs.existsSync(p)) {

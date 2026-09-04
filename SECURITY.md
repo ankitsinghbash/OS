@@ -36,7 +36,7 @@ This document outlines the security architecture, threat model, active firewall 
 
 ---
 
-## 🌐 3. Tokyo Cloud VM Security (`127.0.0.1`)
+## 🌐 3. Tokyo Cloud VM Security (<Tokyo-GCP-VM-IP>)
 
 | Layer | Configuration | Action Taken |
 | :--- | :--- | :--- |
@@ -57,7 +57,8 @@ This document outlines the security architecture, threat model, active firewall 
    * ❌ **Enable Withdrawals**: **STRICTLY DISABLED**. Even in the event of an API key leak, funds **CANNOT** be withdrawn from the exchange.
 
 2. **Binance IP Whitelisting**:
-   * Binance API keys are locked strictly to the Tokyo VM IP address (`127.0.0.1`). Requests originating from any other IP (home Wi-Fi, public internet, unauthorized servers) are instantly rejected by Binance with error `-2015`.
+   * Binance API keys are locked strictly to the designated Tokyo VM IP address. Requests originating from any other IP (home Wi-Fi, public internet, unauthorized servers) are instantly rejected by Binance with error `-2015`.
+
 
 3. **100% Delta-Neutral Hedge Verification**:
    * Long Spot Position (`14.2857 CRV`) + Short Futures Position (`-14.3 CRV`).
@@ -84,7 +85,8 @@ If any abnormal behavior or security concern arises:
    ```
 2. **Halt Cloud Trading Engine**:
    ```bash
-   ssh -i C:\Users\ankit\.ssh\id_gcp_deploy bharatos_user@127.0.0.1 "pm2 stop bharatos-funding"
+   ssh -i ~/.ssh/id_gcp_deploy <user>@<server-ip> "pm2 stop bharatos-funding"
    ```
+
 3. **Revoke Binance API Keys**:
    Visit [Binance API Management](https://www.binance.com/en/my/settings/api-management) and click **"Delete All API Keys"** for immediate account lockdown.

@@ -2,6 +2,23 @@ const http = require('http');
 const { execFile } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
+
+
+// Dynamically load untracked .env config if present
+const env = {};
+const envPath = path.join(__dirname, '.env');
+if (fs.existsSync(envPath)) {
+  try {
+    fs.readFileSync(envPath, 'utf8').split('\n').forEach(line => {
+      const trimmed = line.trim();
+      if (trimmed && !trimmed.startsWith('#')) {
+        const idx = trimmed.indexOf('=');
+        if (idx > 0) env[trimmed.slice(0, idx).trim()] = trimmed.slice(idx + 1).trim();
+      }
+    });
+  } catch (e) {}
+}
 
 // ═════════════════════════════════════════════════════════════════════════
 // 🔒 CYBERSECURITY CONFIGURATION & HARDENING POLICY
@@ -10,8 +27,10 @@ const PORT = process.env.PORT || 8766;
 const HOST = '127.0.0.1'; // STRICT LOCALHOST ONLY: Never bind 0.0.0.0 (prevents LAN/Wi-Fi sniffing)
 const CACHE_FILE = path.join(__dirname, 'latest_dashboard_data.json');
 const HTML_FILE = path.join(__dirname, 'index.html');
-const SSH_KEY_PATH = 'C:\\Users\\ankit\\.ssh\\id_gcp_deploy';
-const REMOTE_HOST = 'bharatos_user@127.0.0.1';
+const SSH_KEY_PATH = process.env.GCP_SSH_KEY || env.GCP_SSH_KEY || path.join(os.homedir(), '.ssh', 'id_gcp_deploy');
+const REMOTE_HOST = process.env.GCP_REMOTE_HOST || env.GCP_REMOTE_HOST || '';
+const REMOTE_DIR = process.env.GCP_REMOTE_DIR || env.GCP_REMOTE_DIR || '~/bharatos';
+
 
 // ── Rate Limiting (DoS & Brute-Force Prevention) ──────────────────────────
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute window
@@ -80,12 +99,13 @@ if (fs.existsSync(CACHE_FILE)) {
 function fetchLiveGCPData() {
   return new Promise((resolve) => {
     // Use execFile with explicit argument array to eliminate shell interpolation vulnerabilities
+    const remoteScript = `${REMOTE_DIR}/scripts/get_dashboard_data.js`;
     const args = [
       '-i', SSH_KEY_PATH,
       '-o', 'StrictHostKeyChecking=no',
       '-o', 'ConnectTimeout=8',
       REMOTE_HOST,
-      'node /home/bharatos_user/bharatos/scripts/get_dashboard_data.js'
+      `node ${remoteScript}`
     ];
 
     execFile('ssh', args, { timeout: 12000, maxBuffer: 1024 * 512 }, (err, stdout, stderr) => {

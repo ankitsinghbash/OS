@@ -11,12 +11,15 @@ use std::path::Path;
 use bharatos_core::funding_rate_engine::FundingRateEngine;
 
 fn load_env() -> (String, String) {
+    let home = std::env::var("HOME").unwrap_or_default();
+    let home_env = format!("{}/bharatos/.env", home);
     let paths = [
-        "/home/bharatos_user/bharatos/.env",
+        home_env.as_str(),
         "../.env",
         ".env",
     ];
     for path in &paths {
+
         if Path::new(path).exists() {
             if let Ok(content) = fs::read_to_string(path) {
                 let mut api_key = String::new();

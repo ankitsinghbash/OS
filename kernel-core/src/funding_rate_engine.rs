@@ -35,8 +35,9 @@ const INR_RATE:              f64 = 95.07;   // USD → INR conversion
 // New: WS markPrice stream → react in <3 seconds  [Kernel level]
 
 // ── Persistence files ────────────────────────────────────────────────────────
-const STATE_FILE: &str = "/home/bharatos_user/bharatos/data/funding_engine_state.json";
-const LOG_FILE:   &str = "/home/bharatos_user/bharatos/data/funding_engine_log.jsonl";
+const STATE_FILE: &str = "data/funding_engine_state.json";
+const LOG_FILE:   &str = "data/funding_engine_log.jsonl";
+
 
 // ── Data Structures ──────────────────────────────────────────────────────────
 #[derive(Debug, Clone)]
@@ -504,10 +505,11 @@ impl FundingRateEngine {
             ));
             // Emergency notification via file flag
             let _ = fs::write(
-                "/home/bharatos_user/bharatos/data/FUNDING_EMERGENCY.flag",
+                "data/FUNDING_EMERGENCY.flag",
                 format!("UNHEDGED: Sell {} {} on spot immediately!", filled_qty, coin.symbol)
             );
             return None;
+
         }
 
         let entry_price = fut_res["avgPrice"].as_str()

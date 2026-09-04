@@ -10,13 +10,15 @@ use std::fs;
 use std::path::Path;
 
 fn load_env() -> (String, String) {
-    // Try server path first, then local .env
+    let home = std::env::var("HOME").unwrap_or_default();
+    let home_env = format!("{}/bharatos/.env", home);
     let paths = [
-        "/home/bharatos_user/bharatos/.env",
+        home_env.as_str(),
         "../.env",
         ".env",
     ];
     for path in &paths {
+
         if Path::new(path).exists() {
             if let Ok(content) = fs::read_to_string(path) {
                 let mut api_key = String::new();

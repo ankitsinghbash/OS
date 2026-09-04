@@ -8,4 +8,5 @@ members = [
 
 [workspace.metadata]
 description = "BharatOS — Sovereign Delta-Neutral Funding Rate Arbitrage Engine in Pure Rust"
-authors = ["Ankit Singh <ankit@bharatos.in>"]
+authors = ["BharatOS Core Contributors <dev@bharatos.org>"]
+
