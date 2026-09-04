@@ -7,7 +7,8 @@ echo.
 cd /d "%~dp0"
 git add -A
 git commit -m "fix(security): sanitize personal paths and IPs to dynamic environment variables"
-git push origin main
+git push origin main --force
+
 
 echo.
 echo =========================================================================
